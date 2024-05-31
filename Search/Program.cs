@@ -10,6 +10,7 @@ namespace Search
     {
         static void Main(string [] args)
         {
+            UIDatabase db = new UIDatabase();
         }
     }
 }
