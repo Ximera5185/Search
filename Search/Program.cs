@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Search
+﻿namespace Search
 {
     internal class Program
     {
         static void Main(string [] args)
         {
-            UIDatabase db = new UIDatabase();
+            UIDatabase uiDatabase = new UIDatabase();
+
+            uiDatabase.Work();
         }
     }
 }

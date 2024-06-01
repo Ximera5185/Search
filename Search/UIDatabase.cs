@@ -1,36 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
 
 namespace Search
 {
     internal class UIDatabase
     {
-       private List<Сriminal> _сriminals = new List<Сriminal> { };
+        private Database _database = new Database();
 
-       public UIDatabase() 
-       {
-            Method();
-       }  
-        public void Method() 
+        public void Work()
         {
-            Database database = new Database();
+            const string SearchCrimonal = "1";
+            const string ExitProgramm = "2";
 
-            _сriminals = database.GetCriminalList();
+            string userInpat;
 
-            var filteredCriminals = _сriminals.Where(criminal => criminal.Age >= 40).Select(criminal => criminal);
+            bool isProgrammWork = true;
 
-            foreach (var crimonal in filteredCriminals)
+            while (isProgrammWork)
             {
-                Console.WriteLine($"{crimonal.FullName} {crimonal.Weight} {crimonal.Height} {crimonal.Nationality} {crimonal.Detained}");
-            }
+                Console.Clear();
+                Console.WriteLine($"Для поиска введите {SearchCrimonal} " +
+                $"Для выхода {ExitProgramm}");
 
-            Console.ReadKey();
+                userInpat = Console.ReadLine();
+
+                switch (userInpat)
+                {
+                    case SearchCrimonal:
+                        Search();
+                        break;
+
+                    case ExitProgramm:
+                        isProgrammWork = false;
+                        break;
+                }
+            }
         }
 
-        
+        private void Search()
+        {
+            int inputUserHeight = GetUserNumber("Введите рост");
+            int inputUserWeight = GetUserNumber("Введите вес");
+
+            Console.WriteLine("Введите национальность");
+
+            string inputUserNationality = Console.ReadLine();
+
+            _database.SearchCriminal(inputUserHeight, inputUserWeight, inputUserNationality);
+        }
+
+        private int GetUserNumber(string message)
+        {
+            int number = 0;
+
+            string input = "";
+
+            bool isNumber = false;
+
+            while (isNumber == false)
+            {
+                Console.WriteLine(message);
+
+                input = Console.ReadLine();
+
+                isNumber = int.TryParse(input, out number);
+
+                if (isNumber == false)
+                    Console.WriteLine("Вы ввели не целое число.");
+                else
+                    isNumber = true;
+
+                Console.Clear();
+            }
+
+            return number;
+        }
     }
 }
