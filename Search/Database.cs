@@ -26,7 +26,7 @@ namespace Search
 
         public void SearchCriminal(int height, int  width, string nationality)
         {
-            var filteredCriminals = _criminals.Where(criminal => criminal.Height == height && criminal.Weight == width && criminal.Nationality == nationality && criminal.Detained == false);
+            var filteredCriminals = _criminals.Where(criminal => criminal.Height == height && criminal.Weight == width && criminal.Nationality == nationality && criminal.isDetained == false);
 
             foreach (var crimonal in filteredCriminals)
             {

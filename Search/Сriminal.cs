@@ -2,12 +2,12 @@
 {
     internal class Сriminal
     {
-        public Сriminal(string fullName, int height, int weight,string nationality, bool detained)
+        public Сriminal(string fullName, int height, int weight,string nationality, bool isDetained)
         {
             FullName = fullName;
             Height = height;
             Weight = weight;
-            Detained = detained;
+            this.isDetained = isDetained;
             Nationality = nationality;
         }
 
@@ -17,6 +17,6 @@
         public int Height { get; private set; } 
         public int Weight { get; private set; } 
 
-        public bool Detained { get; private set; }
+        public bool isDetained { get; private set; }
     }
 }
